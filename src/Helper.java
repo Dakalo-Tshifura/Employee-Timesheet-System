@@ -21,7 +21,7 @@ public abstract class Helper extends Employee {
 
     public void addEmployee() {
         try {
-            System.out.println("<-----CREATE NEW EMPLOYEE----->");
+            System.out.println("=CREATE NEW EMPLOYEE");
             System.out.println();
 
             System.out.print("Name: ");

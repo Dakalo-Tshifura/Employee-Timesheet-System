@@ -7,6 +7,14 @@ public abstract class Employee {
     private EmployeeType empType;
     private Scanner input;
 
+    public Employee(int empId, String empName, double empRate,EmployeeType empType){
+
+        this.empId= empId;
+        this.empName=empName;
+        this.empRate=empRate;
+        this.empType=empType;
+    }
+
     public Employee() {
         this.input = new Scanner(System.in);
     }

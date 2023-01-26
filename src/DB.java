@@ -9,20 +9,21 @@ public class DB {
     private static String dbPass = "";
     private static Connection dbConnection;
     private static DB _instance;
-    private final static String DELIMETER = "\t";
+    
 
     public DB() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             dbConnection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
-            System.out.println("Connection successful...");
+            //System.out.println("Connection successful...");
         } catch (ClassNotFoundException e) {
             System.out.println("ClassError: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("SQLError: " + e.getMessage());
         }
     }
-
+        // Static method
+        // Static method to create instance of Singleton class
     public static DB instance() {
         if (_instance != null) {
             return _instance;
@@ -74,7 +75,7 @@ public class DB {
         }
         return false;
     }
-
+  // i dont understand43
     public void viewNonManagerialEmployees() {
         if (!isValidConnection()) {
             System.out.println("Invalid connection");
@@ -85,10 +86,7 @@ public class DB {
             ResultSet emp = st.executeQuery("SELECT * FROM `employees` WHERE `isManager` = false");
 
             while (emp.next()) {
-                System.out.println(emp.getInt("employee_id")
-                        + DELIMETER + emp.getString("employee_name")
-                        + DELIMETER + "R" + emp.getDouble("employee_rate")
-                        + DELIMETER + emp.getString("employee_type"));
+                System.out.println(emp.getInt("employee_id") + emp.getString("employee_name") + "R" + emp.getDouble("employee_rate") + emp.getString("employee_type"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,11 +117,7 @@ public class DB {
             return;
         }
 
-        System.out.println("NAME"
-                + DELIMETER + "ID"
-                + DELIMETER + "RATE"
-                + DELIMETER + "TYPE"
-                + DELIMETER + "HRS");
+        System.out.println("NAME "+ "ID" + "RATE" + "TYPE" + "HRS");
 
         try (Statement st = dbConnection.createStatement()) {
             // Retrieving Employee Information
@@ -148,11 +142,7 @@ public class DB {
                             timesheet.getTime("lunch_end").toString());
                 }
 
-                System.out.println(employeeName
-                        + DELIMETER + employeeId
-                        + DELIMETER + "R" + employeeRate
-                        + DELIMETER + employeeType
-                        + DELIMETER + totalWorkedHours);
+                System.out.println(employeeName + employeeId + "R" + employeeRate+ employeeType + totalWorkedHours);
             }
 
             System.out.println();

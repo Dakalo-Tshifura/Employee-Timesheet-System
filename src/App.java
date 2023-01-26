@@ -16,7 +16,7 @@ public class App extends Helper {
 
         if (DB.instance().login(username, password)) {
             System.out.println();
-            System.out.println("<---- WELCOME TO G4L ------>");
+            System.out.println("WELCOME TO Geeks4Learning");
             System.out.println();
 
             while (true) {
@@ -39,7 +39,7 @@ public class App extends Helper {
 
     @Override
     public double calculatePay() {
-        // TODO Auto-generated method stub
+      
         return 0;
     }
 }
