@@ -75,7 +75,7 @@ public class DB {
         }
         return false;
     }
-  // i dont understand43
+ 
     public void viewNonManagerialEmployees() {
         if (!isValidConnection()) {
             System.out.println("Invalid connection");
@@ -86,7 +86,7 @@ public class DB {
             ResultSet emp = st.executeQuery("SELECT * FROM `employees` WHERE `isManager` = false");
 
             while (emp.next()) {
-                System.out.println(emp.getInt("employee_id") + emp.getString("employee_name") + "R" + emp.getDouble("employee_rate") + emp.getString("employee_type"));
+                System.out.println(emp.getInt("employee_id") +"\t"+ emp.getString("employee_name") + "\tR" + emp.getDouble("employee_rate") +"\t"+ emp.getString("employee_type"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,7 +117,8 @@ public class DB {
             return;
         }
 
-        System.out.println("NAME "+ "ID" + "RATE" + "TYPE" + "HRS");
+
+       System.out.println("NAME \t"+ "ID\t" + "RATE\t" + "TYPE\t" + "HRS\t");
 
         try (Statement st = dbConnection.createStatement()) {
             // Retrieving Employee Information
@@ -135,14 +136,14 @@ public class DB {
                 String sheetQuery = "SELECT `work_date`, `work_start`, `work_end`, `lunch_start`, `lunch_end` FROM `timesheet` WHERE `employee_id` = "
                         + employee.getInt("employee_id") + "";
                 ResultSet timesheet = st.executeQuery(sheetQuery);
-
+                
                 while (timesheet.next()) {
                     totalWorkedHours += this.employeeWorkHours(timesheet.getTime("work_start").toString(),
                             timesheet.getTime("work_end").toString(), timesheet.getTime("lunch_start").toString(),
                             timesheet.getTime("lunch_end").toString());
                 }
-
-                System.out.println(employeeName + employeeId + "R" + employeeRate+ employeeType + totalWorkedHours);
+                
+                System.out.println(employeeName +"\t"+ employeeId + "\tR" + employeeRate+"\t"+ employeeType +"\t"+ totalWorkedHours);
             }
 
             System.out.println();
