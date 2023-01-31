@@ -9,8 +9,7 @@ public class SalaryEmployee extends Employee {
 
     @Override
     public double calculatePay() {
-        
-        return this.basicSalary/2;
+        return this.basicSalary/12;
     }
     
 }
