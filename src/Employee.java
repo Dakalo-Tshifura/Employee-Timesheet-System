@@ -6,13 +6,17 @@ public abstract class Employee {
     private Double empRate;
     private EmployeeType empType;
     private Scanner input;
+    private double hoursWorked;
+    private double hourlyWage;
 
-    public Employee(int empId, String empName, double empRate,EmployeeType empType){
+    public Employee(int empId, String empName, double empRate,EmployeeType empType, double hoursWorked, double hourlyWage){
 
         this.empId= empId;
         this.empName=empName;
         this.empRate=empRate;
         this.empType=empType;
+        this.hoursWorked=hoursWorked;
+        this.hourlyWage=hourlyWage;
     }
 
     public Employee() {
@@ -34,6 +38,9 @@ public abstract class Employee {
     public void setEmployeeType(EmployeeType type) {
         this.empType = type;
     }
+    public void setHoursWorked(double hoursWorked){
+        this.hoursWorked = hoursWorked;
+    }
 
     public int getEmployeeId() {
         return this.empId;
@@ -49,6 +56,12 @@ public abstract class Employee {
 
     public String getEmployeeType() {
         return this.empType.toString();
+    }
+    public double getHoursWorked(){
+        return this.hoursWorked;
+    }
+    public double getHourlyWage(){
+        return this.hourlyWage;
     }
 
     public void save() {
@@ -68,5 +81,7 @@ public abstract class Employee {
         DB.instance().generateTimesheet(this.input.nextInt());
     }
 
-    public abstract double calculatePay();
+    public  double calculatePay(){
+        return this.hourlyWage *this.hoursWorked;
+    }
 }
